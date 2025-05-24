@@ -1,0 +1,44 @@
+package com.cocosun.learn.controller.api.students;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cocosun.learn.mapper.students.StudentMapper;
+import com.cocosun.learn.model.students.Student;
+import com.cocosun.learn.repository.students.StudentRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+@RequestMapping("/students")
+@RequiredArgsConstructor
+public class StudentController {
+
+    private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
+
+    @PostMapping
+    public Student save(@RequestBody Student student) {
+        return studentRepository.save(student); // JPA
+    }
+
+    @GetMapping("/{id}")
+    public Student findById(@PathVariable Long id) {
+        return studentRepository.findById(id).orElse(null); // JPA
+    }
+
+    @GetMapping
+    public List<Student> findAll() {
+        List<Student> ll = studentMapper.findAllStudents();
+        System.out.println("-------------------------------");
+        System.out.println(ll.size());
+        System.out.println("-------------------------------");
+        return studentMapper.findAllStudents(); // MyBatis
+    }
+}
