@@ -35,10 +35,6 @@ public class StudentController {
 
     @GetMapping
     public List<Student> findAll() {
-        List<Student> ll = studentMapper.findAllStudents();
-        System.out.println("-------------------------------");
-        System.out.println(ll.size());
-        System.out.println("-------------------------------");
         return studentMapper.findAllStudents(); // MyBatis
     }
 }
