@@ -1,4 +1,8 @@
 
+-- CREATE DATABASE testdb IF NOT EXISTS;
+
+USE testdb;
+
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS saveaccount;
 DROP TABLE IF EXISTS student;

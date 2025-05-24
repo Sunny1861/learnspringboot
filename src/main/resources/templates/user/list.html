@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>User List</title></head>
+<body>
+
+<!-- Create User Form -->
+<h2>Create New User</h2>
+<form action="#" th:action="@{/users}" th:object="${user}" method="post">
+    Name: <input type="text" th:field="*{name}" required /> --
+    Email: <input type="email" th:field="*{email}" required /> --
+    Phonenumber: <input type="number" th:field = "*{phonenum}" />
+    <button type="submit">Add User</button>
+</form>
+
+<!-- User List -->
+<h2>User List</h2>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.phonenum}"></td>
+        <td><a th:href="@{'/users/delete/' + ${user.id}}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
