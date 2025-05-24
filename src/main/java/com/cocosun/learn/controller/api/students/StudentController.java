@@ -13,6 +13,7 @@ import com.cocosun.learn.mapper.students.StudentMapper;
 import com.cocosun.learn.model.students.Student;
 import com.cocosun.learn.repository.students.StudentRepository;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -23,16 +24,19 @@ public class StudentController {
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
 
+    @Operation(summary = "Create a student")
     @PostMapping
     public Student save(@RequestBody Student student) {
         return studentRepository.save(student); // JPA
     }
 
+    @Operation(summary = "Get a student by id")
     @GetMapping("/{id}")
     public Student findById(@PathVariable Long id) {
         return studentRepository.findById(id).orElse(null); // JPA
     }
 
+    @Operation(summary = "List all students")
     @GetMapping
     public List<Student> findAll() {
         return studentMapper.findAllStudents(); // MyBatis

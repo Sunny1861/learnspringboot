@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cocosun.learn.model.products.Product;
 import com.cocosun.learn.service.products.ProductService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -24,26 +26,31 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @Operation(summary = "Get all products")
     @GetMapping
     public List<Product> getAll() {
         return productService.getAll();
     }
 
+    @Operation(summary = "Get product by id")
     @GetMapping("/{id}")
     public Product getById(@PathVariable Long id) {
         return productService.getById(id);
     }
 
+    @Operation(summary = "Create a product")
     @PostMapping
     public Product create(@RequestBody Product product) {
         return productService.save(product);
     }
 
+    @Operation(summary = "Modify a product by id")
     @PutMapping("/{id}")
     public Product update(@PathVariable Long id, @RequestBody Product product) {
         return productService.update(id, product);
     }
 
+    @Operation(summary = "Delete a product by id")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         productService.delete(id);
