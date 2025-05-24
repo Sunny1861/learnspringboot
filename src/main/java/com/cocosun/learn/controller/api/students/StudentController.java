@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cocosun.learn.exception.ResourceNotFoundException;
 import com.cocosun.learn.mapper.students.StudentMapper;
 import com.cocosun.learn.model.students.Student;
 import com.cocosun.learn.repository.students.StudentRepository;
@@ -17,8 +18,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api/students")
 @RequiredArgsConstructor
+
 public class StudentController {
 
     private final StudentRepository studentRepository;
@@ -33,7 +35,11 @@ public class StudentController {
     @Operation(summary = "Get a student by id")
     @GetMapping("/{id}")
     public Student findById(@PathVariable Long id) {
-        return studentRepository.findById(id).orElse(null); // JPA
+        Student stu = studentRepository.findById(id).orElse(null); // JPA
+        if (stu == null) {
+            throw new ResourceNotFoundException("Student not found");
+        }
+        return stu;
     }
 
     @Operation(summary = "List all students")

@@ -11,9 +11,9 @@ INSERT INTO saveaccount (name, balance) VALUES ('Alice', 678999);
 INSERT INTO saveaccount (name, balance) VALUES ('starnge', 0);
 
 
-INSERT INTO student (name, age) VALUES ('leo', 10);
+INSERT INTO student (name, age) VALUES ('leo', 13);
 INSERT INTO student (name, age) VALUES ('max', 11);
-INSERT INTO student (name, age) VALUES ('lisa', 41);
+INSERT INTO student (name, age) VALUES ('lisa', 15);
 INSERT INTO student (name, age) VALUES ('lily', 12);
 
 INSERT INTO customer (name) VALUES ('John');

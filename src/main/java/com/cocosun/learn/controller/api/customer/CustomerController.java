@@ -33,7 +33,7 @@ public class CustomerController {
         return customerMapper.findAllCustomersWithOrders();
     }
 
-    @Operation(summary = "Get one customer and his orders")
+    @Operation(summary = "Get one customer and orders")
     @GetMapping("/{id}")
     public Customer getCustomer(@PathVariable long id) {
         return customerMapper.findCustomerById(id);
