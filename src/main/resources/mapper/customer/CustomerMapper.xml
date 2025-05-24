@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cocosun.learn.mapper.customer.CustomerMapper">
+
+    <resultMap id="CustomerOrderMap" type="com.cocosun.learn.model.customer.Customer">
+        <id property="id" column="c_id" />
+        <result property="name" column="c_name" />
+        <collection property="orders" ofType="com.cocosun.learn.model.order.Order">
+            <id property="id" column="o_id"/>
+            <result property="orderName" column="o_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="findAllCustomersWithOrders" resultMap="CustomerOrderMap">
+        SELECT
+            c.id AS c_id,
+            c.name AS c_name,
+            o.id AS o_id,
+            o.order_name AS o_name
+        FROM customer c
+        LEFT JOIN orders o ON c.id = o.customer_id
+    </select>
+
+    <select id="findCustomerById" resultMap="CustomerOrderMap" parameterType="long">
+        SELECT
+            c.id AS c_id,
+            c.name AS c_name,
+            o.id AS o_id,
+            o.order_name AS o_name
+        FROM customer c
+        LEFT JOIN orders o ON c.id = o.customer_id
+        WHERE c.id = #{id}
+    </select>
+
+</mapper>

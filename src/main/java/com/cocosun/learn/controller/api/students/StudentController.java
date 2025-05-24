@@ -27,7 +27,7 @@ public class StudentController {
     @Operation(summary = "Create a student")
     @PostMapping
     public Student save(@RequestBody Student student) {
-        return studentRepository.save(student); // JPA
+        return studentRepository.save(student); // JPA, Spring Data JPA for CRUD-heavy modules (like User, Product, etc.)
     }
 
     @Operation(summary = "Get a student by id")
@@ -39,6 +39,6 @@ public class StudentController {
     @Operation(summary = "List all students")
     @GetMapping
     public List<Student> findAll() {
-        return studentMapper.findAllStudents(); // MyBatis
+        return studentMapper.findAllStudents(); // MyBatis, MyBatis for reporting, search, analytics, batch queries
     }
 }
