@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form id="registerForm">
+        <input type="text" name="username" placeholder="Username" required /><br/>
+        <input type="password" name="password" placeholder="Password" required /><br/>
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" required /><br/>
+        <button type="submit">Register</button>
+    </form>
+    <div id="result" style="color:red;"></div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const username = form.username.value;
+            const password = form.password.value;
+            const confirmPassword = form.confirmPassword.value;
+
+            const result = document.getElementById('result');
+            result.style.color = 'red';
+
+            if (password !== confirmPassword) {
+                result.textContent = "Passwords do not match!";
+                return;
+            }
+
+            const response = await fetch('/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                result.style.color = 'green';
+                result.textContent = "Registration successful!";
+            } else {
+                result.textContent = await response.text();
+            }
+        });
+    </script>
+</body>
+</html>

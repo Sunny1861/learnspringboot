@@ -1,4 +1,4 @@
-package com.cocosun.learn.controller.web.userregistry;
+package com.cocosun.learn.controller.api.userregistry;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cocosun.learn.config.JwtUtil;
+import com.cocosun.learn.exception.AuthException;
 import com.cocosun.learn.service.userregistry.CustomUserDetailsService;
 
 @RestController
@@ -41,7 +42,7 @@ public class AuthController {
             UserDetails userDetails = userDetailsService.loadUserByUsername(request.username());
             return jwtUtil.generateToken(userDetails.getUsername());
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Invalid username or password");
+            throw new AuthException("Invalid username or password");
         }
     }
 }

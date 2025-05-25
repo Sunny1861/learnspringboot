@@ -1,4 +1,4 @@
-package com.cocosun.learn.controller.web.userregistry;
+package com.cocosun.learn.controller.api.userregistry;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
