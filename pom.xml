@@ -54,7 +54,7 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.3.0</version>
+            <!-- <version>9.2.0</version> -->
         </dependency>
 
         <!-- Lombok is a Java library that integrates with Spring Boot to reduce boilerplate code.
@@ -63,7 +63,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.34</version>
+            <!-- <version>1.18.38</version> -->
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -91,6 +91,13 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+    <!-- <version>3.5.0</version> -->
+</dependency>
 
 
     </dependencies>
