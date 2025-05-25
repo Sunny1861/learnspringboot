@@ -25,3 +25,12 @@ INSERT INTO orders (order_name, customer_id) VALUES ('book chicken', 1);
 INSERT INTO orders (order_name, customer_id) VALUES ('book vegitable', 1);
 INSERT INTO orders (order_name, customer_id) VALUES ('book water', 3);
 INSERT INTO orders (order_name, customer_id) VALUES ('book beer', 4);
+
+-- yourPassword1
+INSERT INTO usersregistry (username, password, role)
+VALUES ('testuser1', '$2a$10$y91elD6sWxIiyCvDuuZiAe/8zcyGNeWwrQoBQ4mmIVCVxo84y9mYO', 'USER');
+
+-- yourPassword2
+INSERT INTO usersregistry (username, password, role)
+VALUES ('testuser2', '$2a$10$mzv9/b5I5zG4SJu0.A9tqegfAI3sK6L.KXKmCdnKdCRYcf9G.JWXS', 'USER');
+
