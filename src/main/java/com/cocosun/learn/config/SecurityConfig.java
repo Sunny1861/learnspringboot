@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/users/**").permitAll()
                 .requestMatchers("/test/**").permitAll()
+                .requestMatchers("/auth/register").permitAll()
                 .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults());

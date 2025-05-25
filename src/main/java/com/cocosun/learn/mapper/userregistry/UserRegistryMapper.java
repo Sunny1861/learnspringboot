@@ -9,4 +9,6 @@ import com.cocosun.learn.model.userregistry.UserEntity;
 public interface UserRegistryMapper {
 
     UserEntity findByUsername(@Param("username") String username);
+
+    void insertUser(UserEntity user);
 }

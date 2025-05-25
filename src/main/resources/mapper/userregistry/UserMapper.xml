@@ -8,4 +8,9 @@
         SELECT * FROM usersregistry WHERE username = #{username}
     </select>
 
+    <insert id="insertUser" parameterType="com.cocosun.learn.model.userregistry.UserEntity">
+        INSERT INTO usersregistry (username, password, role)
+        VALUES (#{username}, #{password}, #{role})
+    </insert>
+
 </mapper>
