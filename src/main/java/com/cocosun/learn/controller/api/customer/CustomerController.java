@@ -14,7 +14,7 @@ import com.cocosun.learn.model.customer.Customer;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     private final CustomerMapper customerMapper;

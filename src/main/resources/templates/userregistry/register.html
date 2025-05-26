@@ -13,6 +13,8 @@
     </form>
     <div id="result" style="color:red;"></div>
 
+    <h2>LogIn</h2>
+    <a th:href="@{/login}">LogIn</a>
     <script>
         document.getElementById('registerForm').addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -29,7 +31,7 @@
                 return;
             }
 
-            const response = await fetch('/auth/register', {
+            const response = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })

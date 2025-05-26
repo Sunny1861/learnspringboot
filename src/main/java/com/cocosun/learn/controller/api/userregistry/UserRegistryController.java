@@ -11,7 +11,7 @@ import com.cocosun.learn.mapper.userregistry.UserRegistryMapper;
 import com.cocosun.learn.model.userregistry.UserEntity;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class UserRegistryController {
 
     private final UserRegistryMapper userRegistryMapper;

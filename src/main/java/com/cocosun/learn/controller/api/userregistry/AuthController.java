@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cocosun.learn.config.JwtUtil;
-import com.cocosun.learn.exception.AuthException;
+import com.cocosun.learn.dto.login.LoginRequest;
+import com.cocosun.learn.dto.login.LoginResponse;
 import com.cocosun.learn.service.userregistry.CustomUserDetailsService;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -29,20 +30,20 @@ public class AuthController {
         this.userDetailsService = userDetailsService;
     }
 
-    public record LoginRequest(String username, String password) {
-
-    }
-
+    // public record LoginRequest(String username, String password) {
+    // }
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public LoginResponse login(@RequestBody LoginRequest request) {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-            UserDetails userDetails = userDetailsService.loadUserByUsername(request.username());
-            return jwtUtil.generateToken(userDetails.getUsername());
+            UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
+            String token = jwtUtil.generateToken(userDetails.getUsername());
+            return new LoginResponse(true, "Login successful", token);
         } catch (AuthenticationException e) {
-            throw new AuthException("Invalid username or password");
+            // throw new AuthException("Invalid username or password");
+            return new LoginResponse(false, "Invalid username or password", null);
         }
     }
 }
