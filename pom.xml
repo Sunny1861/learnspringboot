@@ -119,6 +119,13 @@
             <scope>runtime</scope>
         </dependency>
 
+<!-- Redis, for jwt token save -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>

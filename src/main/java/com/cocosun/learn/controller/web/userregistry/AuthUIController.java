@@ -26,33 +26,4 @@ public class AuthUIController {
     public String showLogin() {
         return "user/login";
     }
-
-    @PostMapping("/login")
-    public String processLogin(@RequestParam String username,
-            @RequestParam String password,
-            Model model) {
-        RestTemplate restTemplate = new RestTemplate();
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername(username);
-        loginRequest.setPassword(password);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<LoginRequest> entity = new HttpEntity<>(loginRequest, headers);
-        ResponseEntity<LoginResponse> response = restTemplate.postForEntity(
-                "http://localhost:9090/api/auth/login", entity, LoginResponse.class);
-
-        LoginResponse res = response.getBody();
-        model.addAttribute("message", res.getMessage());
-        if (res.isSuccess()) {
-            model.addAttribute("token", res.getToken());
-        }
-        return "user/login";
-    }
-
-    @GetMapping("/welcome")
-    public String welcomePage() {
-        return "welcome"; // after login success
-    }
 }
