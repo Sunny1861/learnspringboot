@@ -74,10 +74,10 @@ public class AuthController {
             response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 
             // ✅ Return wrapped response
-            return ResponseEntity.ok(new LoginResponse(true, "Login successful", token));
+            return ResponseEntity.ok(new LoginResponse(true, "Login successful"));
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(new LoginResponse(false, "Invalid username or password", null));
+                    .body(new LoginResponse(false, "Invalid username or password"));
         }
     }
 
