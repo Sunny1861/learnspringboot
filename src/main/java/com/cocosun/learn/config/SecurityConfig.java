@@ -52,16 +52,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-    // @Bean
-    // public CorsConfigurationSource corsConfigurationSource() {
-    //     CorsConfiguration config = new CorsConfiguration();
-    //     config.addAllowedOrigin("http://localhost:3000"); // your frontend
-    //     config.addAllowedMethod("*");
-    //     config.addAllowedHeader("*");
-    //     config.setAllowCredentials(true);
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     source.registerCorsConfiguration("/**", config);
-    //     return source;
-    // }
 }

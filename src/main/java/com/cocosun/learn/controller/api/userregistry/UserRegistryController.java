@@ -34,6 +34,7 @@ public class UserRegistryController {
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        System.out.println("*****************: " + user.getPassword());
         user.setRole("USER");
 
         userRegistryMapper.insertUser(user);

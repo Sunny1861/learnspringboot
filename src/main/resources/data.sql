@@ -34,3 +34,11 @@ VALUES ('testuser1', '$2a$10$y91elD6sWxIiyCvDuuZiAe/8zcyGNeWwrQoBQ4mmIVCVxo84y9m
 INSERT INTO usersregistry (username, password, role)
 VALUES ('testuser2', '$2a$10$mzv9/b5I5zG4SJu0.A9tqegfAI3sK6L.KXKmCdnKdCRYcf9G.JWXS', 'USER');
 
+-- sunny
+INSERT INTO usersregistry (username, password, role)
+VALUES ('sunny', '$2a$10$rHwf40SfuxXavqHig1MxV.H37pf.hl7u4/4DdPtli.NZbedse7qzq', 'USER');
+
+-- sunny8
+INSERT INTO usersregistry (username, password, role)
+VALUES ('sunny8', '$2a$10$pVgHY5.s4p8aKJJfu4MGhOTDRHWHlXJRLFuV8U6Xvlvmkiw7OHdVG', 'USER');
+

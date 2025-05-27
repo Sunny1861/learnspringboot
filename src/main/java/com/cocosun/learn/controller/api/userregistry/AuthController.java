@@ -3,6 +3,7 @@ package com.cocosun.learn.controller.api.userregistry;
 import java.time.Duration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
@@ -11,7 +12,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +37,9 @@ public class AuthController {
     @Autowired
     private RedisService redisService;
 
+    @Value("${jwt.cookie.name}")
+    private String cookieName;
+
     public AuthController(AuthenticationManager authenticationManager,
             JwtUtil jwtUtil,
             CustomUserDetailsService userDetailsService) {
@@ -57,10 +60,10 @@ public class AuthController {
             String token = jwtUtil.generateToken(userDetails.getUsername());
 
             // Save to Redis with IP
-            String clientIp = httpRequest.getRemoteAddr();
-            redisService.saveToken(token, request.getUsername(), clientIp);
+            // String clientIp = httpRequest.getRemoteAddr();
+            redisService.saveToken(token, request.getUsername());
 
-            ResponseCookie cookie = ResponseCookie.from("AUTH-TOKEN", token)
+            ResponseCookie cookie = ResponseCookie.from(cookieName, token)
                     .httpOnly(true)
                     .secure(false)
                     .path("/")
