@@ -1,4 +1,4 @@
-package com.cocosun.learn.test.web.welcome;
+package com.cocosun.learn.junit.test.web.welcome;
 
 import static org.hamcrest.Matchers.containsString;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cocosun.learn.common.base.BaseLoginTest;
+import com.cocosun.learn.junit.base.BaseWithCookieTest;
 
-public class WelcomePageTest extends BaseLoginTest {
+public class WelcomePageTest extends BaseWithCookieTest {
 
     @Test
     void testGetUsersPageDeleteBtnShow() throws Exception {

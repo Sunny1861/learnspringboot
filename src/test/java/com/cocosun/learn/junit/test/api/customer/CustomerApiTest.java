@@ -1,4 +1,4 @@
-package com.cocosun.learn.test.api.customer;
+package com.cocosun.learn.junit.test.api.customer;
 
 import org.junit.jupiter.api.Test;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -6,9 +6,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cocosun.learn.common.base.BaseLoginTest;
+import com.cocosun.learn.junit.base.BaseWithCookieTest;
 
-public class CustomerApiTest extends BaseLoginTest {
+public class CustomerApiTest extends BaseWithCookieTest {
 
     @Test
     void testGetUsersPageDeleteBtnShow() throws Exception {

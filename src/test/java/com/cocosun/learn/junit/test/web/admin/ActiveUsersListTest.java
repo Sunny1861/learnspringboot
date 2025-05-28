@@ -1,4 +1,4 @@
-package com.cocosun.learn.test.web.login;
+package com.cocosun.learn.junit.test.web.admin;
 
 import static org.hamcrest.Matchers.containsString;
 import org.junit.jupiter.api.Test;
@@ -6,15 +6,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.cocosun.learn.common.base.BaseLoginTest;
+import com.cocosun.learn.junit.base.BaseWithCookieTest;
 
-public class ValidLogInTest extends BaseLoginTest {
+public class ActiveUsersListTest extends BaseWithCookieTest {
 
     @Test
     void testGetUsersPageDeleteBtnShow() throws Exception {
-        mockMvc.perform(get("/users")
+        mockMvc.perform(get("/admin/active-users")
                 .with(authCookie()))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Delete")));
+                .andExpect(content().string(containsString(redisKeyPrefix + "sunny")));
     }
 }

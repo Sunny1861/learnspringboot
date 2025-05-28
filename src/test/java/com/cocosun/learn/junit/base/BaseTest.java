@@ -1,4 +1,4 @@
-package com.cocosun.learn.common.base;
+package com.cocosun.learn.junit.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

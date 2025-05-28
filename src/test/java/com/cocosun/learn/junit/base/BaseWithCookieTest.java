@@ -1,4 +1,4 @@
-package com.cocosun.learn.common.base;
+package com.cocosun.learn.junit.base;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,7 +15,7 @@ import jakarta.servlet.http.Cookie;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public abstract class BaseLoginTest extends BaseTest {
+public abstract class BaseWithCookieTest extends BaseTest {
 
     // @Autowired
     // private Environment environment;
