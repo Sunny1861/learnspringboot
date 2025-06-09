@@ -21,6 +21,9 @@ public abstract class BaseNGTest extends AbstractTestNGSpringContextTests {
     @Value("${jwt.redis.key.prefix}")
     protected String redisKeyPrefix;
 
+    @Value("${spring.base.url}")
+    protected String testBasicUri;
+
     protected String jwtToken;
 
     @BeforeSuite

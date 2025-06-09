@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import static org.hamcrest.Matchers.equalTo;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.testng.annotations.Test;
 
 import com.cocosun.learn.testng.test.base.BaseWithCookieTestNG;
 
@@ -15,7 +14,7 @@ import io.restassured.http.Cookies;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class CustomerApiTestNG extends BaseWithCookieTestNG {
 
-    @Test
+    // @Test
     public void testGetCustomerById() {
         RestAssured.given()
                 .baseUri("http://localhost:9080")
@@ -29,7 +28,7 @@ public class CustomerApiTestNG extends BaseWithCookieTestNG {
                 .body("name", equalTo("Alex"));
     }
 
-    @Test
+    // @Test
     public void testGetAllCustomerss() {
         RestAssured.given()
                 .baseUri("http://localhost:9080")

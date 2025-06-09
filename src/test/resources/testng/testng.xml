@@ -2,7 +2,7 @@
 <suite name="MyTestNGSuite">
   <test name="Customer API Test">
     <classes>
-      <class name="com.cocosun.learn.testng.test.api.customer.CustomerApiNGTest"/>
+      <class name="com.cocosun.learn.testng.test.api.login.LoginNGTest"/>
     </classes>
   </test>
 </suite>

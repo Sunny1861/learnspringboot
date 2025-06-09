@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Cookie;
@@ -12,6 +13,11 @@ import io.restassured.response.Response;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public abstract class BaseNGWithCookieTest extends BaseNGTest {
+
+    @BeforeSuite
+    public void setUri() {
+        RestAssured.baseURI = testBasicUri;
+    }
 
     @BeforeClass
     public void setup() {
@@ -22,7 +28,6 @@ public abstract class BaseNGWithCookieTest extends BaseNGTest {
     private String fetchTokenFromLoginApi(String username, String password) {
         Response response = RestAssured
                 .given()
-                .baseUri("http://localhost:9080")
                 .contentType("application/json")
                 .body("{ \"username\": \"" + username + "\", \"password\": \"" + password + "\" }")
                 .when()
